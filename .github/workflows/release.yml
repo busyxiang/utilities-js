@@ -1,0 +1,42 @@
+name: Version or Release
+
+on:
+  push:
+    branches:
+      - release
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: yarn bump
+          publish: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Send a Discord notification if a publish happens
+        if: steps.changesets.outputs.published == 'true'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'A new version was published!'
