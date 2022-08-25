@@ -24,9 +24,11 @@
   "dependencies": {
     "@actions/exec": "^1.1.1",
     "@changesets/changelog-github": "^0.4.6",
-    "@changesets/cli": "^2.24.3"
+    "@changesets/cli": "^2.24.3",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
     "prettier": "^2.7.1"
   }
 }
