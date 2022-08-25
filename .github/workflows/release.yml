@@ -19,31 +19,47 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: setup caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.PNPM_CACHE_FOLDER }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
       - uses: pnpm/action-setup@v2.2.2
         name: Install pnpm
         with:
           version: 7
-          run_install: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 16.x
           cache: 'pnpm'
+
+      - name: Set up NPM credentials
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Create and publish versions
+      - name: Create versions PR & prepare publish
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@master
         with:
           version: pnpm ci:version
-          commit: 'chore: update versions'
-          title: 'chore: update versions'
           publish: pnpm ci:publish
+          commit: 'chore(deploy): Release'
+          title: 'chore(deploy): Release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Send a Discord notification if a publish happens
         if: steps.changesets.outputs.published == 'true'
