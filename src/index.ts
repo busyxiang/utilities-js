@@ -1,1 +1,1 @@
-export { alphabeticalSort } from './sorter';
+export { alphabeticalSort, countSort } from './sorter';

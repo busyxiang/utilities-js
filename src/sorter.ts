@@ -10,3 +10,15 @@ export const alphabeticalSort = <T>(field: string | ((data: T) => string)) => (
 
   return nameA.localeCompare(nameB);
 };
+
+export const countSort = <T>(field: string | ((data: T) => number)) => (
+  dataA: T,
+  dataB: T,
+) => {
+  const isStringField = typeof field === 'string';
+
+  const numberA = isStringField ? get(dataA, field) : field(dataA);
+  const numberB = isStringField ? get(dataB, field) : field(dataB);
+
+  return numberA - numberB;
+};
