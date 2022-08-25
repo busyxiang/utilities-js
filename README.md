@@ -2,6 +2,8 @@
 
 > Javascript Utilities
 
+[![npm version](https://badge.fury.io/js/@busyxiang%2Futilities-js.svg)](https://badge.fury.io/js/@busyxiang%2Futilities-js)
+
 ## Install
 
 ```bash
