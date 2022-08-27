@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@actions/exec': ^1.1.1
   '@changesets/changelog-github': ^0.4.6
   '@changesets/cli': ^2.24.3
   '@types/jest': ^28.1.8
@@ -18,7 +17,6 @@ dependencies:
   lodash-es: 4.17.21
 
 devDependencies:
-  '@actions/exec': 1.1.1
   '@changesets/changelog-github': 0.4.6
   '@changesets/cli': 2.24.3
   '@types/jest': 28.1.8
@@ -31,16 +29,6 @@ devDependencies:
   typescript: 4.7.4
 
 packages:
-
-  /@actions/exec/1.1.1:
-    resolution: {integrity: sha512-+sCcHHbVdk93a0XT19ECtO/gIXoxvdsgQLzb2fE2/5sIZmWQuluYyjPQtrtTHdU1YzTZ7bAPN4sITq2xi1679w==}
-    dependencies:
-      '@actions/io': 1.1.2
-    dev: true
-
-  /@actions/io/1.1.2:
-    resolution: {integrity: sha512-d+RwPlMp+2qmBfeLYPLXuSRykDIFEwdTA0MMxzS9kh4kvP1ftrc/9fzy6pX6qAjthdXruHQ6/6kjT/DNo5ALuw==}
-    dev: true
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
