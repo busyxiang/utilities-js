@@ -1,5 +1,11 @@
 # @busyxiang/utilities-js
 
+## 0.0.8
+
+### Patch Changes
+
+- [`193bafc`](https://github.com/busyxiang/utilities-js/commit/193bafcef326fc11e38fc99a453d05f2f471df89) - Implement randomHexColor and isHexColor util
+
 ## 0.0.7
 
 ### Patch Changes
