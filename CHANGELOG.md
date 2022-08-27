@@ -1,5 +1,11 @@
 # @busyxiang/utilities-js
 
+## 0.0.9
+
+### Patch Changes
+
+- [`9399c5f`](https://github.com/busyxiang/utilities-js/commit/9399c5f529105a2908297cf368be2090f180e33f) - Implement minMax util
+
 ## 0.0.8
 
 ### Patch Changes
