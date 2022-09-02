@@ -1,3 +1,7 @@
+# DEPRECATED
+> This repo migrated to [https://github.com/busyxiang/toolbox/utils](https://github.com/busyxiang/toolbox/tree/main/packages/utils)
+
+
 # utilities-js
 
 > Javascript Utilities
